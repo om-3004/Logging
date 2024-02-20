@@ -8,7 +8,31 @@ using Util::String;
 //using Exception::myException;
 
 // constructor
-Date::Date(int day, int month, int year) {
+Date::Date(unsigned int a, unsigned int b, unsigned int c, d_Format format) {
+	m_Format = format;
+	switch (m_Format) {
+	case dmy:
+		dateFormatter(a, b, c);
+		break;
+	case dym:
+		dateFormatter(a, c, b);
+		break;
+	case mdy:
+		dateFormatter(b, a, c);
+		break;
+	case myd:
+		dateFormatter(c, a, b);
+		break;
+	case ydm:
+		dateFormatter(b, c, a);
+		break;
+	case ymd:
+		dateFormatter(c, b, a);
+		break;
+	}
+}
+
+void Date::dateFormatter(unsigned int day, unsigned int month, unsigned int year) {
 	if (month < 1 || month > 12)
 		throw Exception::InvalidDate("Invalid month");
 	else {
@@ -25,13 +49,13 @@ Date::Date(int day, int month, int year) {
 	m_IsCacheValid = false;
 }
 
-bool Date::isLeap(int m_Year) {
+bool Date::isLeap(unsigned int m_Year) {
 	if ((m_Year % 100 != 0 && m_Year % 4 == 0) || m_Year % 400 == 0)
 		return true;
 	return false;
 }
 
-int Date::daysInMonth(int m_Month, int m_Year) {
+unsigned int Date::daysInMonth(unsigned int m_Month, unsigned int m_Year) {
 	switch (m_Month) {
 	case 1: case 3: case 5: case 7: case 8: case 10: case 12:
 		return 31;
@@ -43,28 +67,29 @@ int Date::daysInMonth(int m_Month, int m_Year) {
 		return(isLeap(m_Year) ? 29 : 28);
 		break;
 	}
+	return 0;
 }
 
-void Date::setDay(int& day) {
+void Date::setDay(unsigned int& day) {
 	if (day > daysInMonth(m_Month, m_Year))
 		throw Exception::InvalidDate("Invalid day");
 	m_Day = day;
 	m_IsCacheValid = false;
 }
 
-void Date::setMonth(int& month) {
+void Date::setMonth(unsigned int& month) {
 	if (month < 1 || month>12)
 		throw Exception::InvalidDate("Invalid month");
 	m_Month = month;
 	m_IsCacheValid = false;
 }
 
-void Date::setYear(int& year) {
+void Date::setYear(unsigned int& year) {
 	m_Year = year;
 	m_IsCacheValid = false;
 }
 
-Date& Date::add_day(int day) {
+Date& Date::add_day(unsigned int day) {
 
 	while (day != 0) {
 		auto DIM{ Date::daysInMonth(m_Month, m_Year) };
@@ -87,7 +112,7 @@ Date& Date::add_day(int day) {
 	return *this;
 }
 
-Date& Date::add_month(int month){
+Date& Date::add_month(const unsigned int& month){
 	if((m_Month + month) > 12){
 		m_Year += (month)/12;
 		m_Month += month%12;
@@ -127,7 +152,7 @@ Date& Date::add_month(int month){
 	return *this;
 }
 
-Date& Date::add_year(int year) {
+Date& Date::add_year(const unsigned int& year) {
 	m_Year += year;
 	m_IsCacheValid = false;
 	return *this;
@@ -152,22 +177,50 @@ String Date::getStrDate() {
 	return m_Cache;
 }
 
-void Date::setDate(const int& day, const int& month, const int& year) {
-	if (month < 1 || month > 12)
-		throw Exception::InvalidDate("Invalid month");
-	else {
-		m_Month = month;
-		if (day > daysInMonth(month, year)) {
-			throw Exception::InvalidDate("Invalid day");
-		}
-		else {
-			m_Day = day;
-		}
+void Date::setDate(const unsigned int& a, const unsigned int& b, const unsigned int& c) {
+	switch (m_Format) {
+	case dmy:
+		dateFormatter(a, b, c);
+		break;
+	case dym:
+		dateFormatter(a, c, b);
+		break;
+	case mdy:
+		dateFormatter(b, a, c);
+		break;
+	case myd:
+		dateFormatter(c, a, b);
+		break;
+	case ydm:
+		dateFormatter(b, c, a);
+		break;
+	case ymd:
+		dateFormatter(c, b, a);
+		break;
 	}
-	m_Year = year;
-	m_IsCacheValid = false;
 }
 
-void Date::displayDate() const {
-	std::cout << m_Day << '/' << m_Month << '/' << m_Year << '\n';
+void Date::displayDate() const{
+
+	switch (m_Format) {
+	case dmy:
+		std::cout << m_Day << '/' << m_Month << '/' << m_Year << '\n';
+		break;
+	case dym:
+		std::cout << m_Day << '/' << m_Year << '/' << m_Month << '\n';
+		break;
+	case mdy:
+		std::cout << m_Month << '/' << m_Day << '/' << m_Year << '\n';
+		break;
+	case myd:
+		std::cout << m_Month << '/' << m_Year << '/' << m_Day << '\n';
+		break;
+	case ydm:
+		std::cout << m_Year << '/' << m_Day << '/' << m_Month << '\n';
+		break;
+	case ymd:
+		std::cout << m_Year << '/' << m_Month << '/' << m_Day << '\n';
+		break;
+	}
+	
 }

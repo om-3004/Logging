@@ -13,84 +13,118 @@ namespace LogSystem {
 	class Log
 	{
 	public:
-		enum class Level {
-			LevelError, LevelWarning, LevelInfo
+		enum Level {
+			LevelDebug,
+			LevelInfo,
+			LevelWarning,
+			LevelError,
+			LevelCritical
 		};
-	private:
-		Level m_LogLevel;
-		Date m_Date;
-	public:
-		// default constructor
-		/*explicit inline Log() : m_LogLevel{ Level::LevelWarning } {
-
-		}*/
-
-		// parameterized constructor
-		inline Log(const Level& level = Level::LevelWarning) : m_LogLevel{ level }, m_Date{ 31, 12, 2022 } {
-
-		}
+		Log(const String& name) : m_NameLogger{ name }, m_Date{ 31, 12, 2022, dmy } {}
+		Log(const String& name, const Level& level) : m_NameLogger{name}, m_LogLevel { level }, m_Date{ 31, 12, 2022, dmy } {}
+		Log(const String& name, const Level& level, const String& file) : m_NameLogger{ name }, m_LogLevel{ level }, m_FileName{ file }, m_Date{ 31, 12, 2022, dmy }, dumpInFile{true} {}
 
 		void SetLogLevel(const Level& level) {
 			m_LogLevel = level;
 		}
 
-		void setDate(int, int, int);
-	
+		void setDate(const unsigned int&, const unsigned int&, const unsigned int&);
+		Level getLogLevel() const {
+			return m_LogLevel;
+		}
+
+		template<typename ...Args>
+		void log(const String& msg, const Level& level, Args ...args);
+		
+		template<typename ...Args>
+		void Debug(const String& msg, Args ...args);
 		template<typename ...Args>
 		void Error(const String& msg, Args ...args);
 		template<typename ...Args>
 		void Warn(const String& msg, Args ...args);
 		template<typename ...Args>
 		void Info(const String& msg, Args ...args);
+		template<typename ...Args>
+		void Critical(const String& msg, Args ...args);
 
-		void print() {
-			std::cout << '\n';
-		}
-
+		void print() { std::cout << '\n'; }
 		template<typename T, typename ...Args>
 		void print(T arg, Args ...args) {
 			std::cout << arg << " ";
 			print(args...);
 		}
+
+		void appendBuffer() { m_BufferLog.append_string("\n"); }
+		template<typename T, typename ...Args>
+		void appendBuffer(T arg, Args ...args) {
+			m_BufferLog.append_string(arg).append_string(" ");
+			appendBuffer(args...);
+		}
+
+		bool dumpInFile{ false };
+
+	private:
+		short int countLogs{ 0 };
+
+		Level m_LogLevel;
+		Date m_Date;
+
+		String m_NameLogger;
+		String m_BufferLog{ "" };
+		String m_FileName{ "default-log.txt" };
+
+		String stringLevel(const Level& level) {
+			switch (level) {
+			case LevelDebug:
+				return "[ DEBUG ]";
+			case LevelInfo:
+				return "[ INFO ]";
+			case LevelWarning:
+				return "[ WARNING ]";
+			case LevelError:
+				return "[ ERROR ]";
+			case LevelCritical:
+				return "[ CRITICAL ]";
+			}
+			return "";
+		}
 	};
 	
-	void Log::setDate(int d, int m, int y) {
+	void Log::setDate(const unsigned int& d, const unsigned int& m, const unsigned int& y) {
 		m_Date.setDate(d, m, y);
 	}
 
 	template<typename ...Args>
-	void Log::Error(const String& msg, Args ...args) {
-		if (m_LogLevel >= Log::Level::LevelError) {
-				std::cout << "Date: " << m_Date.getStrDate() << " [Error]: " << msg << " ";
-			if (sizeof...(args) > 0)
-				print(args...);
-			else
-				std::cout << "\n";
-		}
+	void Log::Debug(const String& msg, Args ...args) {
+		log(msg, LevelDebug, args...);
+	}
+
+	template<typename ...Args>
+	void Log::Info(const String& msg, Args ...args) {
+		log(msg, LevelInfo, args...);
 	}
 
 	template<typename ...Args>
 	void Log::Warn(const String& msg, Args ...args) {
-		if (m_LogLevel >= Log::Level::LevelWarning) {
-				std::cout << "Date: " << m_Date.getStrDate() << " [Warning]: " << msg << " ";
-			if (sizeof...(args) > 0)
-				print(args...);
-			else
-				std::cout << "\n";
-		}
+		log(msg, LevelWarning, args...);
 	}
-	
+
 	template<typename ...Args>
-	void Log::Info(const String& msg, Args ...args) {
-		if (m_LogLevel >= Log::Level::LevelInfo) {
-			std::cout << "Date: " << m_Date.getStrDate() << " [Info]: " << msg << " ";
+	void Log::Error(const String& msg, Args ...args) {
+		log(msg, LevelError, args...);
+	}
+
+	template<typename ...Args>
+	void Log::Critical(const String& msg, Args ...args) {
+		log(msg, LevelCritical, args...);
+		/*if (m_LogLevel >= Log::Level::LevelCritical) {
+			std::cout << "Date: " << m_Date.getStrDate() << " [Critical]: " << msg << " ";
 			if (sizeof...(args) > 0)
 				print(args...);
 			else
 				std::cout << "\n";
-		}
+		}*/
 	}
-	
 }
 
 #endif

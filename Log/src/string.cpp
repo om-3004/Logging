@@ -176,6 +176,12 @@ String String::to_string(int n) { // to_string(12)
 	return String{ s1 };
 }
 
+const char* String::raw() const {
+	char* temp = new char[m_Size + 1];
+	memcpy(temp, m_Buffer.get(), m_Size);
+	temp[m_Size] = '\0';
+	return temp;
+}
 
 std::ostream& Util::operator<<(std::ostream& stream, const String& string) {
 	stream << string.m_Buffer;

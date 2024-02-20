@@ -4,51 +4,60 @@
 #include "string.h"
 #include <iostream>
 
+enum d_Format {
+	dmy, dym, mdy, myd, ydm, ymd
+};
+
 namespace Util {
 	class Date
 	{
-	private:
-		int m_Day;
-		int m_Month;
-		int m_Year;
-		bool isLeap(int );
-		int daysInMonth(int , int );
-		mutable String m_Cache;
-		bool m_IsCacheValid;
-
 	public:
-		Date(int day, int month, int year);
+		Date(unsigned int a, unsigned int b, unsigned int c, d_Format format);
 
 		//getter setter for day
-		int getDay() const {
+		unsigned int getDay() const {
 			return m_Day;
 		}
-		void setDay(int& day);
+		void setDay(unsigned int& day);
 
 		//getter setter for month
-		int getMonth() const {
+		unsigned int getMonth() const {
 			return m_Month;
 		}
-		void setMonth(int& month);
+		void setMonth(unsigned int& month);
 
 		//getter setter for year
-		int getYear() const {
+		unsigned int getYear() const {
 			return m_Year;
 		}
-		void setYear(int& year);
+		void setYear(unsigned int& year);
 
-		void setDate(const int& day, const int& month, const int& year);
+		void setDate(const unsigned int& day, const unsigned int& month, const unsigned int& year);
 
 
 		//add attr mem func
-		Date& add_day(int );
-		Date& add_month(int );
-		Date& add_year(int );
+		Date& add_day(unsigned int );
+		Date& add_month(const unsigned int& );
+		Date& add_year(const unsigned int& );
 
 		String getStrDate();
 		void updateCache();
 
-		void displayDate() const ;
+		void displayDate() const;
+
+	private:
+		unsigned int m_Day;
+		unsigned int m_Month;
+		unsigned int m_Year;
+
+		bool isLeap(unsigned int );
+		unsigned int daysInMonth(unsigned int , unsigned int );
+
+		mutable String m_Cache;
+		bool m_IsCacheValid;
+
+		d_Format m_Format;
+		void dateFormatter(unsigned int day, unsigned month, unsigned year);
 	};
 }
 

@@ -44,6 +44,7 @@ namespace Util {
 		String& to_upper();
 		static void reverseString(String&);
 		static String to_string(int);
+		const char* raw() const;
 
 		friend std::ostream& operator<<(std::ostream& stream, const String& string);
 	};
