@@ -76,6 +76,22 @@ namespace LogSystem {
 		String stringLevel(const Level& level) {
 			switch (level) {
 			case LevelDebug:
+				return "\033[0;35m[ DEBUG ]\033[0m";
+			case LevelInfo:
+				return "\033[0;36m[ INFO ]\033[0m";
+			case LevelWarning:
+				return "\033[1;33m[ WARNING ]\033[0m";
+			case LevelError:
+				return "\033[1;31m[ ERROR ]\033[0m";
+			case LevelCritical:
+				return "\033[0;31m[ CRITICAL ]\033[0m";
+			}
+			return "";
+		}
+
+		String stringLevelFile(const Level& level) {
+			switch (level) {
+			case LevelDebug:
 				return "[ DEBUG ]";
 			case LevelInfo:
 				return "[ INFO ]";

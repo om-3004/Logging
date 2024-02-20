@@ -28,7 +28,7 @@ namespace LogSystem {
 			countLogs++;
 			m_BufferLog.append_string(m_Date.getStrDate()).append_string(" ")
 				.append_string("[ ").append_string(m_NameLogger)   // defaultLogger - delete
-				.append_string(" ]").append_string(" ").append_string(stringLevel(level))
+				.append_string(" ]").append_string(" ").append_string(stringLevelFile(level))
 				.append_string(" : ").append_string(msg).append_string(" ");
 			appendBuffer(args...);
 

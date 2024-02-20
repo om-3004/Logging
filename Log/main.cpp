@@ -13,21 +13,22 @@ int main()
 	using Util::Date;
 	using namespace Exception;
 
-	//Log log{"Om", Log::LevelInfo, "logs.txt"};
-	////log.dumpInFile = true;
-	//log.Debug("Debug");
-	//log.Info("Information");
-	//log.Warn("Warning");
-	//log.Error("Error");
-	//log.Critical("Critical");
+	Log log{"Om", Log::LevelDebug, "logs.txt"};
+	//log.dumpInFile = true;
+	log.Debug("Debug");
+	log.Info("Information");
+	log.Warn("Warning");
+	log.Error("Error");
+	log.Critical("Critical");
 
 	//LogSystem::Log::dumpInFile = true;
-	// Cannot dump in file while using namespace
-	LogSystem::Debug("Debug");
-	LogSystem::Info("Information");
-	LogSystem::Warn("Warning");
-	LogSystem::Error("Error");
-	LogSystem::Critical("Critical");
+	// 
+	// CANNOT DUMP IN FILE WHILE USING NAMESPACE
+	//LogSystem::Debug("Debug");
+	//LogSystem::Info("Information");
+	//LogSystem::Warn("Warning");
+	//LogSystem::Error("Error");
+	//LogSystem::Critical("Critical");
 
 	/*log1.Info("Info");
 	log1.Warn("Warning");

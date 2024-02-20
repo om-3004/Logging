@@ -168,12 +168,12 @@ void Date::updateCache() {
 
 String Date::getStrDate() {
 	if (!m_IsCacheValid) {
-		std::cout << "Cache miss" << '\n';
+		//std::cout << "Cache miss" << '\n';
 		updateCache();
 	}
-	else {
+	/*else {
 		std::cout << "Cache hit" << '\n';
-	}
+	}*/
 	return m_Cache;
 }
 
