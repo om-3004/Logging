@@ -34,11 +34,12 @@ namespace Util {
 		}
 
 		// operators
-		char& operator[](unsigned int ) const;
+		char& operator[](unsigned int ) const noexcept;
 		bool operator==(const String& ) const ;
 		friend String operator+(const String&, const String& );
 
 		//methods
+		char& at(unsigned int ) const ;
 		String& append_string(const String&);
 		String& to_lower();
 		String& to_upper();

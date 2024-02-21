@@ -21,10 +21,10 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\date.cpp">
+    <ClCompile Include="removed\date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\string.cpp">
+    <ClCompile Include="removed\string.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +32,13 @@
     <ClInclude Include="include\log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\date.h">
+    <ClInclude Include="removed\date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\string.h">
+    <ClInclude Include="removed\string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\exception.h">
+    <ClInclude Include="removed\exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\logger.h">

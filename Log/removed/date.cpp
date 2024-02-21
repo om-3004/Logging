@@ -1,7 +1,7 @@
 #include <iostream>
-#include "../include/date.h"
-#include "../include/string.h"
-#include "../include/exception.h"
+#include "date.h"
+#include "string.h"
+#include "exception.h"
 
 using Util::Date;
 using Util::String;

@@ -13,3 +13,63 @@
 31/12/2022 [ Om ] [ WARNING ] : Warning 
 31/12/2022 [ Om ] [ ERROR ] : Error 
 31/12/2022 [ Om ] [ CRITICAL ] : Critical 
+31/12/2022 [ Om ] [ DEBUG ] : Debug 
+31/12/2022 [ Om ] [ INFO ] : Information 
+31/12/2022 [ Om ] [ WARNING ] : Warning 
+31/12/2022 [ Om ] [ ERROR ] : Error 
+31/12/2022 [ Om ] [ CRITICAL ] : Critical 
+21/1/2024 [ Om ] [ DEBUG ] : Debug 
+21/1/2024 [ Om ] [ INFO ] : Information 
+21/1/2024 [ Om ] [ WARNING ] : Warning 
+21/1/2024 [ Om ] [ ERROR ] : Error 
+21/1/2024 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024 [ Om ] [ DEBUG ] : Debug 
+21/2/2024 [ Om ] [ INFO ] : Information 
+21/2/2024 [ Om ] [ WARNING ] : Warning 
+21/2/2024 [ Om ] [ ERROR ] : Error 
+21/2/2024 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024 [ Om ] [ DEBUG ] : Debug 
+21/2/2024 [ Om ] [ INFO ] : Information 
+21/2/2024 [ Om ] [ WARNING ] : Warning 
+21/2/2024 [ Om ] [ ERROR ] : Error 
+21/2/2024 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024::10:2:35 [ Om ] [ DEBUG ] : Debug 
+21/2/2024::10:2:35 [ Om ] [ INFO ] : Information 
+21/2/2024::10:2:35 [ Om ] [ WARNING ] : Warning 
+21/2/2024::10:2:35 [ Om ] [ ERROR ] : Error 
+21/2/2024::10:2:35 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024 10:2:57 [ Om ] [ DEBUG ] : Debug 
+21/2/2024 10:2:57 [ Om ] [ INFO ] : Information 
+21/2/2024 10:2:57 [ Om ] [ WARNING ] : Warning 
+21/2/2024 10:2:57 [ Om ] [ ERROR ] : Error 
+21/2/2024 10:2:57 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024 10:42:6 [ Om ] [ DEBUG ] : Debug 
+21/2/2024 10:42:6 [ Om ] [ INFO ] : Information 
+21/2/2024 10:42:6 [ Om ] [ WARNING ] : Warning 
+21/2/2024 10:42:6 [ Om ] [ ERROR ] : Error 
+21/2/2024 10:42:6 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024 18:19:48 [ Om ] [ DEBUG ] : Debug 
+21/2/2024 18:19:48 [ Om ] [ INFO ] : Information 
+21/2/2024 18:19:48 [ Om ] [ WARNING ] : Warning 
+21/2/2024 18:19:48 [ Om ] [ ERROR ] : Error 
+21/2/2024 18:19:48 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024 18:26:17 [ Om ] [ DEBUG ] : Debug 
+21/2/2024 18:26:17 [ Om ] [ INFO ] : Information 
+21/2/2024 18:26:17 [ Om ] [ WARNING ] : Warning 
+21/2/2024 18:26:17 [ Om ] [ ERROR ] : Error 
+21/2/2024 18:26:17 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024 18:26:25 [ Om ] [ DEBUG ] : Debug 
+21/2/2024 18:26:25 [ Om ] [ INFO ] : Information 
+21/2/2024 18:26:25 [ Om ] [ WARNING ] : Warning 
+21/2/2024 18:26:25 [ Om ] [ ERROR ] : Error 
+21/2/2024 18:26:25 [ Om ] [ CRITICAL ] : Critical 
+21/2/2024 18:29:24 [ Om Thakkar ] [ DEBUG ] : Debug 
+21/2/2024 18:29:24 [ Om Thakkar ] [ INFO ] : Information 
+21/2/2024 18:29:24 [ Om Thakkar ] [ WARNING ] : Warning 
+21/2/2024 18:29:24 [ Om Thakkar ] [ ERROR ] : Error 
+21/2/2024 18:29:24 [ Om Thakkar ] [ CRITICAL ] : Critical 
+21/2/2024 18:29:24 [ Om ] [ DEBUG ] : Debug 
+21/2/2024 18:29:24 [ Om ] [ INFO ] : Information 
+21/2/2024 18:29:24 [ Om ] [ WARNING ] : Warning 
+21/2/2024 18:29:24 [ Om ] [ ERROR ] : Error 
+21/2/2024 18:29:24 [ Om ] [ CRITICAL ] : Critical 

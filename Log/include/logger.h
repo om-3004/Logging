@@ -18,18 +18,18 @@ namespace LogSystem {
 	}
 
 	template<typename ...Args>
-	void Log::log(const String& msg, const Level& level, Args ...args) {
+	void Log::log(const std::string& msg, const Level& level, Args ...args) {
 		if (level >= m_LogLevel) {
-			std::cout << m_Date.getStrDate() << " [ " << m_NameLogger << " ] " << stringLevel(level) << " : " << msg << " ";
+			std::cout << getStrDateTime() << " [ " << m_NameLogger << " ] " << stringLevel(level) << " : " << msg << " ";
 			print();
 		}
 
 		if (dumpInFile) {
 			countLogs++;
-			m_BufferLog.append_string(m_Date.getStrDate()).append_string(" ")
-				.append_string("[ ").append_string(m_NameLogger)   // defaultLogger - delete
-				.append_string(" ]").append_string(" ").append_string(stringLevelFile(level))
-				.append_string(" : ").append_string(msg).append_string(" ");
+			m_BufferLog.append(getStrDateTime()).append(" ")
+				.append("[ ").append(m_NameLogger)   // defaultLogger - delete
+				.append(" ]").append(" ").append(stringLevelFile(level))
+				.append(" : ").append(msg).append(" ");
 			appendBuffer(args...);
 
 			if (countLogs >= 5) {
@@ -42,23 +42,23 @@ namespace LogSystem {
 	}
 
 	template<typename ...Args>
-	void Debug(const String& msg, Args ...args) {
+	void Debug(const std::string& msg, Args ...args) {
 		defaultLogger()->log(msg, Log::LevelDebug, args...);
 	}
 	template<typename ...Args>
-	void Info(const String& msg, Args ...args) {
+	void Info(const std::string& msg, Args ...args) {
 		defaultLogger()->log(msg, Log::LevelInfo, args...);
 	}
 	template<typename ...Args>
-	void Warn(const String& msg, Args ...args) {
+	void Warn(const std::string& msg, Args ...args) {
 		defaultLogger()->log(msg, Log::LevelWarning, args...);
 	}
 	template<typename ...Args>
-	void Error(const String& msg, Args ...args) {
+	void Error(const std::string& msg, Args ...args) {
 		defaultLogger()->log(msg, Log::LevelError, args...);
 	}
 	template<typename ...Args>
-	void Critical(const String& msg, Args ...args) {
+	void Critical(const std::string& msg, Args ...args) {
 		defaultLogger()->log(msg, Log::LevelCritical, args...);
 	}
 }

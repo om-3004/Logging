@@ -136,18 +136,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\date.cpp" />
+    <ClCompile Include="removed\date.cpp" />
     <ClCompile Include="src\log.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\string.cpp" />
+    <ClCompile Include="removed\string.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\date.h" />
-    <ClInclude Include="include\exception.h" />
+    <ClInclude Include="removed\date.h" />
+    <ClInclude Include="removed\exception.h" />
     <ClInclude Include="include\fileDump.h" />
     <ClInclude Include="include\log.h" />
     <ClInclude Include="include\logger.h" />
-    <ClInclude Include="include\string.h" />
+    <ClInclude Include="removed\string.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

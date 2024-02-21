@@ -1,7 +1,7 @@
 #include <cstring>
 #include <iostream>
-#include "../include/string.h"
-#include "../include/exception.h"
+#include "string.h"
+#include "exception.h"
 
 using Util::String;
 
@@ -62,11 +62,11 @@ String& String::operator=(String&& other) noexcept {
 	return *this;
 }
 
-char& String::operator[](unsigned int index) const {
+char& String::operator[](unsigned int index) const noexcept {
 	if (index <= m_Size)
 		return m_Buffer[index];
 	else
-		throw Exception::IndexOutOfBound("Excessing out of bound index");
+		return m_Buffer[m_Size];
 }
 
 bool String::operator==(const String& other) const {
@@ -93,6 +93,13 @@ String Util::operator+(const String& str, const String& other) {
 	newBuffer = nullptr;
 
 	return AppendString;
+}
+
+char& String::at(unsigned int index) const {
+	if (index <= m_Size)
+		return m_Buffer[index];
+	else
+		throw Exception::IndexOutOfBound("Excessing out of bound index");
 }
 
 String& String::append_string(const String& other) {

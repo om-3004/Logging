@@ -11,9 +11,9 @@ namespace LogSystem {
 		std::ofstream outFile{};
 	public:
 		fileDump() : outFile{ "default-log.txt", std::ios::app } {}
-		fileDump(const Util::String& fileName) : outFile{ fileName.raw(), std::ios::app } {}
+		fileDump(const std::string& fileName) : outFile{ fileName, std::ios::app } {}
 		
-		void flushStream(const Util::String& m_BufferLog) {
+		void flushStream(const std::string &m_BufferLog) {
 			outFile << m_BufferLog;
 			outFile.flush();
 		}
