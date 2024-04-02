@@ -5,7 +5,7 @@
 #include <chrono>
 #include <string>
 #include "string.h"
-
+#include "fileDump.h"
 
 namespace LogSystem {
 
@@ -23,11 +23,18 @@ namespace LogSystem {
 		Log(const std::string& name, const Level& level) : m_NameLogger{name}, m_LogLevel { level }, m_Date{ getStrDateTime() } {}
 		Log(const std::string& name, const Level& level, const std::string& file) : m_NameLogger{ name }, m_LogLevel{ level }, m_FileName{ file }, m_Date{ getStrDateTime() }, dumpInFile{true} {}
 
+		~Log() {
+			if (dumpInFile && countLogs < 5) {
+				fileDump f{ m_FileName };
+				f.flushStream(m_BufferLog);
+				m_BufferLog = "";
+				countLogs = 0;
+			}
+		}
+
 		void SetLogLevel(const Level& level) {
 			m_LogLevel = level;
 		}
-
-		//void setDate(const unsigned int&, const unsigned int&, const unsigned int&);
 		Level getLogLevel() const {
 			return m_LogLevel;
 		}
@@ -72,7 +79,6 @@ namespace LogSystem {
 		std::string m_BufferLog{ "" };
 		std::string m_FileName{ "default-log.txt" };
 
-		// MOVE INTO CPP FILE
 		std::string stringLevel(const Level& level);
 
 		std::string stringLevelFile(const Level& level);
@@ -80,10 +86,6 @@ namespace LogSystem {
 		std::string getStrDateTime();
 
 	};
-	
-	/*void Log::setDate(const unsigned int& d, const unsigned int& m, const unsigned int& y) {
-		m_Date.setDate(d, m, y);
-	}*/
 
 	template<typename ...Args>
 	void Log::Debug(const std::string& msg, Args ...args) {
@@ -108,13 +110,6 @@ namespace LogSystem {
 	template<typename ...Args>
 	void Log::Critical(const std::string& msg, Args ...args) {
 		log(msg, LevelCritical, args...);
-		/*if (m_LogLevel >= Log::Level::LevelCritical) {
-			std::cout << "Date: " << m_Date.getStrDate() << " [Critical]: " << msg << " ";
-			if (sizeof...(args) > 0)
-				print(args...);
-			else
-				std::cout << "\n";
-		}*/
 	}
 }
 

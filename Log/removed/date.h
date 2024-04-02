@@ -12,7 +12,7 @@ namespace Util {
 	class Date
 	{
 	public:
-		Date(unsigned int a, unsigned int b, unsigned int c, d_Format format);
+		Date(unsigned int a, unsigned int b, unsigned int c, d_Format format = dmy);
 
 		//getter setter for day
 		unsigned int getDay() const {
